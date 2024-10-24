@@ -35,4 +35,9 @@ public class TarefasService {
         return tarefasDTOList;
     }
 
+    public void deleteById(Long id){
+        repository.deleteById(id);
+    }
+
+
 }

@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(value = ("/api/listaDeTarefas"))
@@ -33,5 +32,17 @@ public class TarefasController {
     @ResponseStatus(HttpStatus.OK)
     public List<TarefasDTO> listarTarefas(){
         return service.getAll();
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void apagarTarefa(@PathVariable Long id){
+        service.deleteById(id);
+    }
+
+    @PutMapping("/atualizar")
+    @ResponseStatus(HttpStatus.OK)
+    public Tarefas atualizarTarefa(@RequestBody TarefasDTO tarefasDTO){
+        return service.save(tarefasDTO);
     }
 }
