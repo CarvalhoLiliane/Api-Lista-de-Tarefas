@@ -13,6 +13,7 @@ public class TarefasMapper {
         dto.setDataVencimento(tarefas.getDataVencimento());
         dto.setPrioridade(tarefas.getPrioridade());
         dto.setStatus(tarefas.getStatus());
+
         return dto;
     }
 
@@ -23,6 +24,6 @@ public class TarefasMapper {
         tarefas.setDataVencimento(tarefasDTO.getDataVencimento());
         tarefas.setPrioridade(tarefasDTO.getPrioridade());
         tarefas.setStatus(tarefasDTO.getStatus());
-        return tarefas;
+        return  tarefas;
     }
 }
