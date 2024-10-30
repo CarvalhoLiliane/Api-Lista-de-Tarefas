@@ -25,9 +25,7 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        System.out.println("Chamando o filtro");
         String tokenJWT = recuperarToken(request);
-        System.out.println(tokenJWT);
         if(tokenJWT != null){
             String subject = tokenService.getSubject(tokenJWT);// subject é o login do usuario
             UserDetails usuario = repository.findByLogin(subject);
@@ -36,7 +34,6 @@ public class SecurityFilter extends OncePerRequestFilter {
             UsernamePasswordAuthenticationToken authenticationToken =
                     new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-            System.out.println("LOGADO NA REQUISIÇÃO");
         }
 
         // necessario para chamar os proximos filtros na aplicação

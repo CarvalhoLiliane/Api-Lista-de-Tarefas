@@ -10,7 +10,7 @@ public class TesteMain {
     }
 
     public static void main(String[] args) {
-        String token = generateToken("1456231");
+        String token = generateToken("14562310");
         System.out.println("Token Bcrypt: " + token);
     }
 }
